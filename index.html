@@ -15,12 +15,13 @@
         <link id="window_style" rel="stylesheet" href="window_flat.css" />
         <link rel="stylesheet" href="./css/style.css" />
         <link rel="stylesheet" href="./css/clock.css" />
+        <link rel="stylesheet" href="./css/menubar.css" />
     </head>
     <body onload="initClock()">
         <section>
             <div class="tp-taskBar">
                 <div class="app-container">
-                    <button class="btn element-logo" style="margin-left: 1rem">
+                    <button class="btn hamburger" style="margin-left: 1rem">
                         <img
                             src="./img/logo/logo.png"
                             alt="icon"
@@ -138,6 +139,7 @@
 
         <!-- Regular HTML content -->
         <div class="content">
+            <div class="menubar"></div>
             <div>
                 <button
                     class="btn"
@@ -208,6 +210,7 @@
         <!-- Setup the window manager using Javascript -->
         <script src="./WindowManager.js"></script>
         <script src="./JavaScript/clock/clock.js"></script>
+        <script src="./JavaScript/menubar.js"></script>
         <script>
             let wm = new WindowManager(
                 window.window_container,
