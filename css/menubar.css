@@ -11,17 +11,61 @@
     bottom: 0;
     left: -60%;
     display: flex;
-    justify-content: center;
-    align-items: flex-start;
+    justify-content: space-around;
     width: 40%;
     height: 70vh;
-    padding: 20% 0;
-    background-color: rgba(0, 0, 0, 0.33);
+    background-color: rgba(0, 0, 0, 0.3);
     backdrop-filter: blur(1rem);
     transition: all 0.5s ease-in;
     z-index: 1;
+    overflow-y: auto;
+}
+
+.menubar .app-list {
+    width: 100%;
+    padding: 1rem 1rem 1rem 2rem;
+}
+.menubar .tp-widgets h2,
+.menubar .app-list h2 {
+    color: #fff;
+    margin: 1rem auto;
+    padding: 0.5rem 0;
+    display: flex;
+    justify-content: center;
+    border: 1px solid rgba(0, 0, 0, 0);
+    background-color: rgba(255, 255, 255, 0.05);
+}
+.menubar .app-list div {
+    border: 1px solid rgba(0, 0, 0, 0);
+    margin: 0.5rem 0;
+}
+.menubar .app-list div button {
+    width: 100%;
+    display: flex;
+    align-items: center;
+}
+.menubar .tp-widgets h2:hover,
+.menubar .app-list h2:hover,
+.menubar .app-list div:hover {
+    border: 1px solid #fff;
+}
+.menubar .app-list div span {
+    color: #fff;
+    padding-left: 1rem;
+}
+.menubar .tp-widgets {
+    width: 100%;
+    padding: 1rem;
 }
 .active {
     left: 0;
     box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+}
+
+/* ========================================================================
+========================================================================
+======================================================================== */
+
+.theme {
+    background-color: aqua;
 }

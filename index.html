@@ -16,6 +16,7 @@
         <link rel="stylesheet" href="./css/style.css" />
         <link rel="stylesheet" href="./css/clock.css" />
         <link rel="stylesheet" href="./css/menubar.css" />
+        <link rel="stylesheet" href="./css/widgets-weather.css" />
     </head>
     <body onload="initClock()">
         <section>
@@ -139,32 +140,225 @@
 
         <!-- Regular HTML content -->
         <div class="content">
-            <div class="menubar"></div>
-            <div>
-                <button
-                    class="btn"
-                    onclick="window_style.href='window_flat.css'"
-                >
-                    window_flat.css
-                </button>
-                <button
-                    class="btn"
-                    onclick="window_style.href='window_glass.css'"
-                >
-                    window_glass.css
-                </button>
-                <button class="btn" onclick="window_style.href='window_xp.css'">
-                    window_xp.css
-                </button>
-                <button class="btn" onclick="window_style.href='window_98.css'">
-                    window_98.css
-                </button>
-                <button
-                    class="btn"
-                    onclick="window_style.href='window_basic.css'"
-                >
-                    window_basic.css
-                </button>
+            <div class="menubar">
+                <div class="app-list">
+                    <h2>App</h2>
+
+                    <div>
+                        <button
+                            class="btn"
+                            onclick="wm.add_window('./Elements/musicPlayer.html')"
+                        >
+                            <img
+                                src="./img/icon/music-player.png"
+                                alt="icon"
+                                width="30px"
+                                height="30px"
+                            />
+                            <span>hello world</span>
+                        </button>
+                    </div>
+                    <div>
+                        <button
+                            class="btn"
+                            onclick="wm.add_window('./Elements/musicPlayer.html')"
+                        >
+                            <img
+                                src="./img/icon/music-player.png"
+                                alt="icon"
+                                width="30px"
+                                height="30px"
+                            />
+                            <span>hello world</span>
+                        </button>
+                    </div>
+                    <div>
+                        <button
+                            class="btn"
+                            onclick="wm.add_window('./Elements/musicPlayer.html')"
+                        >
+                            <img
+                                src="./img/icon/music-player.png"
+                                alt="icon"
+                                width="30px"
+                                height="30px"
+                            />
+                            <span>hello world</span>
+                        </button>
+                    </div>
+                    <div>
+                        <button
+                            class="btn"
+                            onclick="wm.add_window('./Elements/musicPlayer.html')"
+                        >
+                            <img
+                                src="./img/icon/music-player.png"
+                                alt="icon"
+                                width="30px"
+                                height="30px"
+                            />
+                            <span>hello world</span>
+                        </button>
+                    </div>
+                    <div>
+                        <button
+                            class="btn"
+                            onclick="wm.add_window('./Elements/musicPlayer.html')"
+                        >
+                            <img
+                                src="./img/icon/music-player.png"
+                                alt="icon"
+                                width="30px"
+                                height="30px"
+                            />
+                            <span>hello world</span>
+                        </button>
+                    </div>
+                    <div>
+                        <button
+                            class="btn"
+                            onclick="wm.add_window('./Elements/musicPlayer.html')"
+                        >
+                            <img
+                                src="./img/icon/music-player.png"
+                                alt="icon"
+                                width="30px"
+                                height="30px"
+                            />
+                            <span>hello world</span>
+                        </button>
+                    </div>
+                    <div>
+                        <button
+                            class="btn"
+                            onclick="wm.add_window('./Elements/musicPlayer.html')"
+                        >
+                            <img
+                                src="./img/icon/music-player.png"
+                                alt="icon"
+                                width="30px"
+                                height="30px"
+                            />
+                            <span>hello world</span>
+                        </button>
+                    </div>
+                    <div>
+                        <button
+                            class="btn"
+                            onclick="wm.add_window('./Elements/musicPlayer.html')"
+                        >
+                            <img
+                                src="./img/icon/music-player.png"
+                                alt="icon"
+                                width="30px"
+                                height="30px"
+                            />
+                            <span>hello world</span>
+                        </button>
+                    </div>
+                    <div>
+                        <button
+                            class="btn"
+                            onclick="wm.add_window('./Elements/musicPlayer.html')"
+                        >
+                            <img
+                                src="./img/icon/music-player.png"
+                                alt="icon"
+                                width="30px"
+                                height="30px"
+                            />
+                            <span>hello world</span>
+                        </button>
+                    </div>
+                    <div>
+                        <button
+                            class="btn"
+                            onclick="wm.add_window('./Elements/musicPlayer.html')"
+                        >
+                            <img
+                                src="./img/icon/music-player.png"
+                                alt="icon"
+                                width="30px"
+                                height="30px"
+                            />
+                            <span>hello world</span>
+                        </button>
+                    </div>
+                    <div>
+                        <button
+                            class="btn"
+                            onclick="wm.add_window('./Elements/musicPlayer.html')"
+                        >
+                            <img
+                                src="./img/icon/music-player.png"
+                                alt="icon"
+                                width="30px"
+                                height="30px"
+                            />
+                            <span>hello world</span>
+                        </button>
+                    </div>
+                    <div>
+                        <button
+                            class="btn"
+                            onclick="wm.add_window('./Elements/musicPlayer.html')"
+                        >
+                            <img
+                                src="./img/icon/music-player.png"
+                                alt="icon"
+                                width="30px"
+                                height="30px"
+                            />
+                            <span>hello world</span>
+                        </button>
+                    </div>
+                </div>
+                <div class="tp-widgets">
+                    <h2>Widgets & Themes</h2>
+                    <div class="weather-info">
+                        <img
+                            id="weather-icon"
+                            src="./img/logo/weather-01.png"
+                            alt="Weather Icon"
+                            class="fade-in"
+                        />
+                        <p id="location"></p>
+                        <p id="temperature"></p>
+                        <p id="description"></p>
+                    </div>
+                    <div class="theme">
+                        <button
+                            class="btn"
+                            onclick="window_style.href='window_flat.css'"
+                        >
+                            Window Flat
+                        </button>
+                        <button
+                            class="btn"
+                            onclick="window_style.href='window_glass.css'"
+                        >
+                            Window Glass
+                        </button>
+                        <button
+                            class="btn"
+                            onclick="window_style.href='window_xp.css'"
+                        >
+                            Window XP
+                        </button>
+                        <button
+                            class="btn"
+                            onclick="window_style.href='window_basic.css'"
+                        >
+                            Window Basic
+                        </button>
+                        <button
+                            class="btn"
+                            onclick="window_style.href='window_98.css'"
+                        >
+                            Window 98
+                        </button>
+                    </div>
+                </div>
             </div>
         </div>
         <!-- Window template instanced by Javascript -->
@@ -178,7 +372,7 @@
                         onclick="wm.minimize_window(this.closest('.win'))"
                         title="Minimize"
                     >
-                        ▁
+                        &#9866;
                     </button>
                     <button
                         class="win-btn win-btn-restore hidden"
@@ -211,6 +405,7 @@
         <script src="./WindowManager.js"></script>
         <script src="./JavaScript/clock/clock.js"></script>
         <script src="./JavaScript/menubar.js"></script>
+        <script src="./JavaScript/weather.js"></script>
         <script>
             let wm = new WindowManager(
                 window.window_container,
