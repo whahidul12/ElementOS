@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <meta
+            name="description"
+            content="Homepage for the max1220 Window Manager Library"
+        />
+        <meta name="author" content="max1220" />
+        <link rel="icon" type="image/x-icon" href="./img/favicon/favicon.png" />
+        <title>Element</title>
+        <style></style>
+        <link rel="stylesheet" href="window_common.css" />
+        <link id="window_style" rel="stylesheet" href="window_flat.css" />
+        <link rel="stylesheet" href="./css/style.css" />
+        <link rel="stylesheet" href="./css/clock.css" />
+    </head>
+    <body onload="initClock()">
+        <section>
+            <div class="tp-taskBar">
+                <div class="app-container">
+                    <button class="btn element-logo" style="margin-left: 1rem">
+                        <img
+                            src="./img/logo/logo.png"
+                            alt="icon"
+                            width="30px"
+                            height="30px"
+                        />
+                    </button>
+                    <button
+                        class="btn"
+                        onclick="wm.add_window('./Elements/musicPlayer.html')"
+                    >
+                        <img
+                            src="./img/icon/music-player.png"
+                            alt="icon"
+                            width="30px"
+                            height="30px"
+                        />
+                    </button>
+                    <button
+                        class="btn"
+                        onclick="wm.add_window('./Elements/calculator.html')"
+                    >
+                        <img
+                            src="./img/icon/calculator.png"
+                            alt="icon"
+                            width="30px"
+                            height="30px"
+                        />
+                    </button>
+                    <button
+                        class="btn"
+                        onclick="wm.add_window('./Elements/toDoApp.html')"
+                    >
+                        <img
+                            src="./img/icon/toDoApp.png"
+                            alt="icon"
+                            width="30px"
+                            height="30px"
+                        />
+                    </button>
+                    <button
+                        class="btn"
+                        onclick="wm.add_window('./Elements/BMIcalc.html')"
+                    >
+                        <img
+                            src="./img/icon/bmi.png"
+                            alt="icon"
+                            width="30px"
+                            height="30px"
+                        />
+                    </button>
+                    <button
+                        class="btn"
+                        onclick="wm.add_window('./Elements/stopwatch.html')"
+                    >
+                        <img
+                            src="./img/icon/stopwatch.png"
+                            alt="icon"
+                            width="30px"
+                            height="30px"
+                        />
+                    </button>
+                </div>
+                <div class="tp-separator"></div>
+                <div class="utilities">
+                    <!-- <div id="minimized_window_list"></div> -->
+                    <button
+                        class="btn"
+                        onclick="wm.add_window('./Elements/volumController.html')"
+                    >
+                        <img
+                            src="./img/logo/volume.png"
+                            alt="icon"
+                            width="30px"
+                            height="30px"
+                        />
+                    </button>
+                    <button
+                        class="btn"
+                        onclick="wm.add_window('./widgets.html')"
+                    >
+                        <img
+                            src="./img/logo/setting.png"
+                            alt="icon"
+                            width="30px"
+                            height="30px"
+                        />
+                    </button>
+                    <button
+                        class="btn"
+                        onclick="wm.add_window('./Elements/calendar.html')"
+                    >
+                        <div class="clock">
+                            <div class="datetime">
+                                <div class="time">
+                                    <span id="hour">00</span>:<span id="minutes"
+                                        >00</span
+                                    >:<span id="seconds">00</span>
+                                    <span id="period">AM</span>
+                                </div>
+                                <div class="date">
+                                    <span id="dayname">Day</span>,
+                                    <span id="month">Month</span>
+                                    <span id="daynum">00</span>,
+                                    <span id="year">Year</span>
+                                </div>
+                            </div>
+                        </div>
+                    </button>
+                </div>
+            </div>
+        </section>
+        <!-- Container for the moveable windows(managed by javascript) -->
+        <div id="window_container"></div>
+
+        <!-- Regular HTML content -->
+        <div class="content">
+            <div>
+                <button
+                    class="btn"
+                    onclick="window_style.href='window_flat.css'"
+                >
+                    window_flat.css
+                </button>
+                <button
+                    class="btn"
+                    onclick="window_style.href='window_glass.css'"
+                >
+                    window_glass.css
+                </button>
+                <button class="btn" onclick="window_style.href='window_xp.css'">
+                    window_xp.css
+                </button>
+                <button class="btn" onclick="window_style.href='window_98.css'">
+                    window_98.css
+                </button>
+                <button
+                    class="btn"
+                    onclick="window_style.href='window_basic.css'"
+                >
+                    window_basic.css
+                </button>
+            </div>
+        </div>
+        <!-- Window template instanced by Javascript -->
+        <template id="window_template">
+            <div class="win" style="width: 500px; height: 90vh">
+                <nav class="win-titlebar win-drag-handle">
+                    <span class="win-icon">🗔</span>
+                    <span class="win-title win-drag-handle">rafui</span>
+                    <button
+                        class="win-btn win-btn-minimize"
+                        onclick="wm.minimize_window(this.closest('.win'))"
+                        title="Minimize"
+                    >
+                        ▁
+                    </button>
+                    <button
+                        class="win-btn win-btn-restore hidden"
+                        onclick="wm.restore_window(this.closest('.win'))"
+                        title="Restore"
+                    >
+                        🗗
+                    </button>
+                    <button
+                        class="win-btn win-btn-maximize"
+                        onclick="wm.maximize_window(this.closest('.win'))"
+                        title="Maximize"
+                    >
+                        🗖
+                    </button>
+                    <button
+                        class="win-btn win-btn-close"
+                        onclick="wm.remove_window(this.closest('.win'))"
+                        title="Close"
+                    >
+                        🞮
+                    </button>
+                </nav>
+                <iframe class="win-iframe"></iframe>
+                <div class="win-resize-handle"></div>
+            </div>
+        </template>
+
+        <!-- Setup the window manager using Javascript -->
+        <script src="./WindowManager.js"></script>
+        <script src="./JavaScript/clock/clock.js"></script>
+        <script>
+            let wm = new WindowManager(
+                window.window_container,
+                window.window_template,
+                true
+            );
+            wm.register_mouse_events(window);
+            wm.register_message_events();
+
+            // update the minimized window list when a window gets minimized/unminimized
+            let minimized_windows = new Map();
+            wm.callbacks.win_minimize = (win) => {
+                let btn = document.createElement("button");
+                btn.innerText = win.title_text.innerText;
+                btn.classList.add("btn");
+                btn.onclick = () => wm.unminimize_window(win);
+                minimized_windows.set(win, btn);
+                window.minimized_window_list.appendChild(btn);
+            };
+            wm.callbacks.win_unminimize = (win) => {
+                let btn = minimized_windows.get(win);
+                btn.remove();
+                minimized_windows.delete(win);
+            };
+
+            // hide the HTML content scrollbars if a window is maximized
+            wm.callbacks.wm_has_maximized = (has_maximized) => {
+                if (has_maximized) {
+                    document.body.style.overflow = "hidden";
+                } else {
+                    document.body.style.overflow = "";
+                }
+            };
+        </script>
+    </body>
+</html>

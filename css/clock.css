@@ -1,0 +1,30 @@
+.clock {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-right: 1rem;
+    cursor: pointer;
+}
+
+.datetime {
+    font-family: "Roboto", sans-serif;
+    color: #fff;
+    border-radius: 2rem;
+}
+
+.date {
+    font-size: 1rem;
+}
+
+.time {
+    font-size: 1rem;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    letter-spacing: 0.2rem;
+}
+.time span:last-child {
+    font-size: 1rem;
+    color: #ffffff;
+    margin-left: 0.5rem;
+}

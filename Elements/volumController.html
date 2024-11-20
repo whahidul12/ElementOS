@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Volume Controller</title>
+        <style>
+            body {
+                margin: 0;
+                font-family: Arial, sans-serif;
+                background-color: #20232a;
+                color: white;
+            }
+
+            /* Volume Controller Panel */
+            .volume-controller {
+                position: absolute;
+                top: 50px;
+                left: 50px;
+                width: 200px;
+                padding: 15px;
+                background: #333;
+                border-radius: 8px;
+                box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+                cursor: move;
+            }
+
+            .volume-controller h3 {
+                margin: 0 0 10px;
+                text-align: center;
+                font-size: 18px;
+            }
+
+            .slider-container {
+                margin-top: 10px;
+            }
+
+            .slider-container input[type="range"] {
+                width: 100%;
+                -webkit-appearance: none;
+                appearance: none;
+                height: 6px;
+                border-radius: 5px;
+                background: #555;
+                outline: none;
+            }
+
+            .slider-container input[type="range"]::-webkit-slider-thumb {
+                -webkit-appearance: none;
+                appearance: none;
+                width: 15px;
+                height: 15px;
+                border-radius: 50%;
+                background: #4caf50;
+                cursor: pointer;
+            }
+
+            .slider-container input[type="range"]::-moz-range-thumb {
+                width: 15px;
+                height: 15px;
+                border-radius: 50%;
+                background: #4caf50;
+                cursor: pointer;
+            }
+
+            .volume-display {
+                text-align: center;
+                margin-top: 10px;
+                font-size: 14px;
+            }
+        </style>
+    </head>
+    <body>
+        <!-- Volume Controller -->
+        <div class="volume-controller" id="volumeController">
+            <h3>Volume Control</h3>
+            <div class="slider-container">
+                <input
+                    type="range"
+                    id="volumeSlider"
+                    min="0"
+                    max="100"
+                    value="50"
+                />
+            </div>
+            <div class="volume-display">
+                Volume: <span id="volumeValue">50</span>%
+            </div>
+        </div>
+
+        <script>
+            // Get elements
+            const volumeController =
+                document.getElementById("volumeController");
+            const volumeSlider = document.getElementById("volumeSlider");
+            const volumeValue = document.getElementById("volumeValue");
+
+            // Volume control logic
+            volumeSlider.addEventListener("input", (e) => {
+                const volume = e.target.value;
+                volumeValue.textContent = volume;
+                console.log(`Global volume set to: ${volume}%`);
+                // Example: Set volume globally (if integrated with media)
+                // document.querySelectorAll('audio, video').forEach(media => {
+                //     media.volume = volume / 100;
+                // });
+            });
+
+            // Draggable Panel Logic
+            let isDragging = false;
+            let offsetX, offsetY;
+
+            volumeController.addEventListener("mousedown", (e) => {
+                isDragging = true;
+                offsetX = e.offsetX;
+                offsetY = e.offsetY;
+                volumeController.style.cursor = "grabbing";
+            });
+
+            document.addEventListener("mouseup", () => {
+                isDragging = false;
+                volumeController.style.cursor = "move";
+            });
+
+            document.addEventListener("mousemove", (e) => {
+                if (isDragging) {
+                    volumeController.style.left = `${e.clientX - offsetX}px`;
+                    volumeController.style.top = `${e.clientY - offsetY}px`;
+                }
+            });
+        </script>
+    </body>
+</html>
