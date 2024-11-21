@@ -1,64 +1,211 @@
+/* General Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
 body {
-  font-family: Arial, sans-serif;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100vh;
-  margin: 0;
-  background: linear-gradient(135deg, #72edf2 10%, #5151e5 100%);
-  color: #ffffff;
+    font-family: Arial, sans-serif;
+    background: linear-gradient(135deg, #6a11cb, #2575fc);
+    color: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    overflow: hidden;
+    padding: 20px;
+    font-family: "Roboto", sans-serif;
 }
 
-.container {
-  text-align: center;
-  background: rgba(0, 0, 0, 0.7);
-  padding: 20px;
-  border-radius: 8px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+/* App Container */
+.app-container {
+    width: 100%;
+    max-width: 600px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 20px;
+    padding: 20px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    backdrop-filter: blur(10px);
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    animation: fadeIn 1s ease-in-out;
 }
 
-.weather-info {
-  margin: 20px 0;
+/* Header */
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
 
-.weather-info img {
-  width: 100px;
-  height: 100px;
+header h1 {
+    font-size: 1.8rem;
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
 }
 
-.weather-info p {
-  margin: 10px 0;
-  font-size: 1.2em;
+header button {
+    background: #ff6a6a;
+    color: #fff;
+    border: none;
+    border-radius: 25px;
+    padding: 10px 20px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
-input,
-button {
-  margin-top: 10px;
-  padding: 10px;
-  font-size: 16px;
-  border: none;
-  border-radius: 5px;
+header button:hover {
+    background: #e74c3c;
+    transform: scale(1.05);
 }
 
-button {
-  background-color: #ff7e5f;
-  color: white;
-  cursor: pointer;
+/* Main Notes Container */
+main#notesContainer {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    max-height: 60vh;
+    overflow-y: hidden;
 }
 
-button:hover {
-  background-color: #feb47b;
+/* Individual Note */
+main#notesContainer .note {
+    background: #fff;
+    color: #2575fc;
+    border-radius: 15px;
+    padding: 15px 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    animation: slideIn 0.5s ease-in-out;
+    position: relative;
 }
 
-.fade-in {
-  animation: fadeIn 2s ease-in-out;
+main#notesContainer .note button {
+    position: absolute;
+    top: 50%;
+    right: 10px;
+    transform: translatey(-50%);
+    background: transparent;
+    border: none;
+    color: #ff4444;
+    font-size: 1.2rem;
+    cursor: pointer;
+    transition: transform 0.3s ease-in-out;
 }
 
+/* Modal Styles */
+.note-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    display: none;
+    justify-content: center;
+    align-items: center;
+    animation: fadeIn 0.5s ease-in-out;
+}
+
+.note-modal.active {
+    display: flex;
+}
+
+.modal-content {
+    background: #fff;
+    color: #2575fc;
+    border-radius: 20px;
+    padding: 20px;
+    width: 90%;
+    max-width: 400px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+    animation: slideDown 0.5s ease-in-out;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+/* Textarea */
+.modal-content textarea#noteInput {
+    width: 100%;
+    height: 100px;
+    border: none;
+    border-radius: 10px;
+    padding: 10px;
+    font-size: 1rem;
+    outline: none;
+    background: rgba(0, 0, 0, 0.1);
+    color: #2575fc;
+    resize: none;
+}
+
+/* Modal Buttons */
+.modal-content button {
+    background: #2575fc;
+    color: #fff;
+    border: none;
+    border-radius: 25px;
+    padding: 10px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+}
+
+.modal-content button:hover {
+    background: #1a5ac9;
+}
+
+/* Animations */
 @keyframes fadeIn {
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: 1;
-  }
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes slideIn {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes slideDown {
+    from {
+        opacity: 0;
+        transform: translateY(-50px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    header h1 {
+        font-size: 1.5rem;
+    }
+
+    header button {
+        padding: 8px 15px;
+        font-size: 0.9rem;
+    }
+
+    main#notesContainer .note {
+        font-size: 0.9rem;
+        padding: 10px 15px;
+    }
+
+    .modal-content {
+        padding: 15px;
+    }
 }
